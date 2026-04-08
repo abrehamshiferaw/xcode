@@ -1,0 +1,30 @@
+#extend("base"):
+    #export("title","#(report.petName)'s Report")
+    #export("header", "Daily Paws Report")
+    #export("body"):
+        <div class="report-card">
+            <div class="data-label">VIP Guest</div>
+            <div class="data-value">#(report.petName)</div>
+            
+            <div class="data-label">Energy Level</div>
+            <div class="data-value">#(report.energyLevel) / 5 </div>
+            <div class="data-label">Lunch</div>
+            <div class="data-value">#(report.mealConsumption)</div>
+            
+            #if(report.bestFriend):
+                <div class="data-label">Best Friend Today</div>
+                <div class="data-value">#(report.bestFriend)</div>
+            #endif
+            #if(report.staffNotes):
+                <div class="data-label">Notes from the Staff</div>
+                <div class="data-value" style="font-size: 1em; line=height: 1.4;">#(report.staffNotes)</div>
+            #endif
+            
+        </div>
+        <div class="share-link">
+            <p style="color: #888;">This is a read-only link. Share the URL above with the pet parents. </p>
+            <a href="/" style="color: var(--accent); text-decoration: none;">&larr; Back to Staff Entry
+            </a>
+        </div>
+    #endexport
+#endextend

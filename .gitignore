@@ -1,0 +1,32 @@
+#macOS
+.DS_Store
+
+#Xcode
+build/
+*.pbxuser
+!defualt.pbxuser
+*.mode1v3
+!default.mode1v3
+*.mode2v3
+!defualt.mode2v3
+*.perspectivev3
+!defualt.perspectivev3
+xcuserdata/
+*.xccheckout
+*.moved-asside
+
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+
+# Swift Package Manager
+.build/
+.swiftpm/
+
+# Vapor & Environment
+.env
+
+# Local Database
+# we ignore the SQLite file so you don't commit test data to Github db.sqlite
+
