@@ -1,55 +1,59 @@
 import Fluent
 import Vapor
 
+// 1. Create a simple struct that leaf can easily read(no database wrappers!)
+struct ReportContext: Encodable {
+    let petName: String
+    let energyLevel: Int
+    let mealConsumption: String
+    let bestFriend: String?
+    let staffNotes: String?
+}
+
 struct ReportController: RouteCollection {
-    func boot(routes: RoutesBuilder ) throws {
-//        shows staff input form at the root URL("/")
+    func boot(routes: RoutesBuilder) throws {
         routes.get(use: indexView)
-//        Group all "/report" routes together
         
         let reports = routes.grouped("report")
-//        Handle Form Submission (POST "/report")
-        
         reports.post(use: create)
-//        show parent view (Readonly) (GET "/report/1234-abcyz..."
         reports.get(":reportID", use: showParentView)
-        
     }
     
-//    Now let's render the form html page
-    
-    func indexView(req: Request) throws -> EventLoopFuture<View> {
+    func indexView(req: Request) throws ->EventLoopFuture<View> {
         return req.view.render("components/index")
     }
     
-//    save the submitted form to SQLite and redirect to the new link
-    
     func create(req: Request) throws -> EventLoopFuture<Response> {
         let report = try req.content.decode(Report.self)
-        
         return report.save(on: req.db).flatMapThrowing {
             guard let id = report.id
-        else{
-            throw Abort(.internalServerError)
+            else {
+                throw Abort(.internalServerError)
+            }
+            
+            return req.redirect(to: "/report/\(id.uuidString)")
         }
-        
-//         redirect to the newly generated unique URL
-        return req.redirect(to: "/report/\(id.uuidString)")
     }
-    
-}
-
-// here we will render the parent read-only page using the data from SQLite
-func showParentView(req: Request) throws -> EventLoopFuture<View> {
-    guard let reportIDString = req.parameters.get("reportID"),
-          let reportID = UUID(uuidString: reportIDString) else {
-              throw Abort(.badRequest)
-          }
-    return Report.find(reportID, on: req.db)
-        .unwrap(or: Abort(.notFound))
-        .flatMap {
-            report in return req.view.render("components/report", ["report": report])
-        }
-}
-
+    func showParentView(req: Request) throws -> EventLoopFuture<View> {
+        guard let reportIDString = req.parameters.get("reportID"),
+              let reportID = UUID(uuidString: reportIDString) else {
+                  throw Abort(.badRequest)
+              }
+        
+        return Report.find(reportID, on: req.db).unwrap(or: Abort(.notFound))
+            .flatMap{
+                report in
+//                extract the plain values from the database ,model
+                
+                let safeContext = ReportContext(
+                    petName: report.petName,
+                    energyLevel: report.energyLevel,
+                    mealConsumption: report.mealConsumption,
+                    bestFriend: report.bestFriend,
+                    staffNotes: report.staffNotes
+                    )
+//                hand the safe plain-text context to Leaf instead
+                return req.view.render("components/report", ["report": safeContext])
+            }
+    }
 }

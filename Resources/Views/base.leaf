@@ -5,15 +5,23 @@
     <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>#(title) | The Velvet Leash</title>
+        <!-- we will polish the ui using CSSS further -->
         <style>
-             :root {
-                --bg-color: #FAFAF7;
+        
+            :root {
+                /* sophisticated, neutral color palette */
+                --bg-color:#FAFAF7;
                 --container-bg: #FFFFFF;
                 --text-main: #4A4A4A;
                 --accent: #B5A397;
+                --button-text: #FFFFFF;
                 --border: #E8E8E8;
-             }
-             body{
+                --placeholder: #B0B0B0;
+                --shadow: 0 10px 25px rgba(0,0,0,0.03);
+                
+                }
+            /* 1. Global page setup */
+            body{
                 font-family: 'Helvetica Neue', -apple-system, sans-serif;
                 background-color: var(--bg-color);
                 color: var(--text-main);
@@ -21,71 +29,123 @@
                 padding: 20px;
                 display: flex;
                 justify-content: center;
-             }
-             .container{
-                background-color: var(--container-bg)
-                max-width: 500px;
-                width: 100%;
+                min-height: 100vh;
+                
+            }
+            /* 2. The form card container */
+            .container {
+                background-color: var(--container-bg);
+                max-width: 100%;
                 padding: 30px;
                 border-radius: 12px;
-                box-shadow: 0 10px 25px rgba(0,0,0,0.03);
+                box-shadow: var(--shadow);
                 border: 1px solid var(--border);
-                
-             }
-             h1 {
+            }
+            
+            /* 3. The boutique header */
+            h1 {
                 text-align: center;
                 color: var(--accent);
                 font-weight: 300;
                 letter-spacing: 1px;
                 margin-bottom: 30px;
-             
-             }
-            .form-group{
+                font-size: 2.2em;
+            }
+            /* 4. Form field layout */
+            .form-group {
                 margin-bottom: 20px;
             }
-            label{
+            label {
                 display: block;
                 margin-bottom: 8px;
                 font-weight: 500;
                 font-size: 0.9em;
-                
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                color: #888;
             }
-           input[type="text"], select, textarea {
+            /* 5. Inputs, selects, and Textarea styling */
+            input[type="text"], select, textarea{
                 width: 100%;
                 padding: 12px;
                 border: 1px solid var(--border);
                 border-radius: 6px;
                 box-sizing: border-box;
                 font-family: inherit;
-           }
-           button {
+                font-size: 1em;
+                color: var(--text-main);
+                background-color: transparent;
+                transition: border-color 0.2s, box-shadow 0.2s;
+                
+            }
+            input::placeholder {
+                color: var(--placeholder);
+                
+            }
+            
+           select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                appearance: none;
+                background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none'%3E%3Cpath stroke='%23B5A397' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m4 6 4 4 4-4'/%3E%3C/svg%3E");
+                background-repeat: no-repeat;
+                background-position: right 12px center;
+                padding-right: 30px;
+                }
+            input[type="text"]:focus, select:focus, textarea:focus {
+                outline: none;
+                border-color: var(--accent);
+                box-shadow: 0 0 0 3px rgba(181, 163, 151, 0.1);
+                
+            }
+            
+            /* 6. The Sophisticated Button */
+            button {
                 width: 100%;
                 background-color: var(--accent);
-                color: white;
+                color: var(--button-text);
                 border: none;
                 padding: 15px;
                 border-radius: 6px;
                 font-size: 1em;
                 cursor: pointer;
-           }
-           
-           .data-label {
-                font-size: 0.8em;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                transition: background-color 0.2s, box-shadow 0.2s;
+                display: block;
+                margin: 0 auto;
+            }
+            
+            button:hover {
+                background-color: #A39286;
+            }
+            button:active {
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            /* 7. Parent View Card */
+            .report-card {
+                    padding: 15px;
+                    background: var(--bg-color);
+                    border-radius: 8px;
+                    margin-bottom: 15px;
+                }
+            .data-label {
+                font-size:0.8em;
                 text-transform: uppercase;
                 color: #888;
-           }
-           .data-value {
+                margin-bottom: 5px;
+                }
+            .data-value {
                 font-size: 1.2em;
                 margin-bottom: 15px;
-                
-           }
-           .share-link {
+                }
+            .share-link {
                 text-align: center;
                 margin-top: 20px;
                 font-size: 0.9em;
-                
-           }
-           
+            }
+     
         </style>
 <!--   end of the style sheet(CSS)     -->
 </head>
