@@ -24,7 +24,7 @@ WORKDIR /app
 
 # Copy the compiled executable
 
-COPY --from=build /build/.build/releases/VelvetLeash /app/
+COPY --from=build /build/.build/release/VelvetLeash /app/
 
 # Copy the Leaf HTML templates so the web pages render
 
