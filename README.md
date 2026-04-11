@@ -1,41 +1,45 @@
-# The Velvet Leash: Daily Paws Report Generator
+# 🐾 The Velvet Leash: Daily Paws Report Generator
 
-A lightweight, full-stack internal web application built for **The Velvet Leash Boutique & Boarding**.
-This tool allows daycare staff to quickly generate and share "Daily Paws Reports" with pet parents via unique, mobile-reponsive web links.
+A lightweight, full-stack internal web application built for **The Velvet Leash Boutique & Boarding**. This tool allows daycare staff to quickly generate and share "Daily Paws Reports" with pet parents via unique, mobile-responsive web links.
 
 ## 🌟 Features
 
-* **staff Input Form: ** A fast, streanlined interface for staff consumption, best friends, and daily notes.
-* **Instant Report Generation:** Generates a unique, read-only URL (e.g., '/report/<UUID>') immediately upon form submission .
-* **Parent View:** A clean, mobile-first, boutique-styled summary page for pet owners to view their dog's specific report on the go.
-
+* **Staff Input Form:** A fast, streamlined interface for staff to log a pet's energy level, meal consumption, best friends, and daily notes.
+* **Instant Report Generation:** Generates a unique, read-only URL (e.g., `/report/<UUID>`) immediately upon form submission.
+* **Boutique UI:** Clean, centered, mobile-first design built with custom CSS and Vapor's Leaf templating engine.
 * **Local Storage:** Uses SQLite for lightweight, reliable data persistence.
+* **Containerized:** Includes a custom `Dockerfile` configured for zero-configuration deployments on Linux servers.
 
-## Tech stack & Architecture
+## 🛠 Tech Stack & Architecture
 
-* **Language: ** Swift 5.5
+* **Language:** Swift 5.5
 * **Framework:** Vapor 4
 * **Database & ORM:** SQLite & Fluent
 * **Templating:** Leaf
-* **Styling: ** Custom CSS (Mobile-first, boutique aesthetic)
-* **Concurrency: ** EventLoopFuture `(Architected specifically for macOS 11/ xcode 13 compatibility)
+* **Deployment:** Docker
+* **Architecture Notes:** * Utilizes `EventLoopFuture` for broad macOS compatibility (macOS 11 / Xcode 13.2.1+).
+  * Implements a `ReportContext` Data Transfer Object (DTO) to safely bridge complex SQLite `@Field` wrappers with the Leaf HTML encoder.
 
-## 🚀 Getting Started
-Follow these instructions to get a copy of the project up and running on your local machine using xcode
+## 📂 Project Structure
 
-### Prerequisites
-
-* A Mac running macOS .
-* **Xcode** installed (Project is fully compatible with macOS 11 Big Sur / Xcode 13.2.1).
-* Swift Package Manager (built into Xcode).
-
-### Installation & Setup
-1. **Clone the repository: **
-```bash
-git clone [https://github.com/abrehamshiferaw/xcode.git](https://github.com/abrehamshiferaw/xcode.git)
-cd xcode
-
-open Package.swift
-```
-
-
+```text
+VelvetLeash/
+├── Dockerfile                  # Production build instructions
+├── Package.swift               # Swift dependencies
+├── Resources/                  
+│   └── Views/
+│       ├── base.leaf           # Main CSS and HTML layout wrapper
+│       └── components/         
+│           ├── index.leaf      # Staff input form UI
+│           └── report.leaf     # Parent read-only page UI
+└── Sources/
+    └── VelvetLeash/
+        ├── Controllers/
+        │   └── ReportController.swift # Routing & Data Handling
+        ├── Migrations/
+        │   └── CreateReport.swift     # SQLite table schemas
+        ├── Models/
+        │   └── Report.swift           # Database Model
+        ├── configure.swift
+        ├── main.swift
+        └── routes.swift
