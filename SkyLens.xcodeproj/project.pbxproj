@@ -11,6 +11,9 @@
 		D0AE4CF52F8B9C96006ABE86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4CF42F8B9C96006ABE86 /* ContentView.swift */; };
 		D0AE4CF72F8B9C99006ABE86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0AE4CF62F8B9C99006ABE86 /* Assets.xcassets */; };
 		D0AE4CFA2F8B9C99006ABE86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D0AE4CF92F8B9C99006ABE86 /* Preview Assets.xcassets */; };
+		D0AE4D052F8B9EBC006ABE86 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D042F8B9EBC006ABE86 /* ImageModel.swift */; };
+		D0AE4D072F8B9FAF006ABE86 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */; };
+		D0AE4D092F8BA299006ABE86 /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D082F8BA299006ABE86 /* ImageCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,10 @@
 		D0AE4CF42F8B9C96006ABE86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0AE4CF62F8B9C99006ABE86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D0AE4CF92F8B9C99006ABE86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D0AE4D042F8B9EBC006ABE86 /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
+		D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
+		D0AE4D082F8BA299006ABE86 /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
+		D0AE4D0A2F8BA9AE006ABE86 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +42,7 @@
 		D0AE4CE62F8B9C95006ABE86 = {
 			isa = PBXGroup;
 			children = (
+				D0AE4D0A2F8BA9AE006ABE86 /* README.md */,
 				D0AE4CF12F8B9C96006ABE86 /* SkyLens */,
 				D0AE4CF02F8B9C96006ABE86 /* Products */,
 			);
@@ -51,8 +59,11 @@
 		D0AE4CF12F8B9C96006ABE86 /* SkyLens */ = {
 			isa = PBXGroup;
 			children = (
+				D0AE4D032F8B9E48006ABE86 /* Utilities */,
+				D0AE4D022F8B9E38006ABE86 /* Services */,
+				D0AE4D002F8B9DAB006ABE86 /* Models */,
+				D0AE4D012F8B9DBE006ABE86 /* Views */,
 				D0AE4CF22F8B9C96006ABE86 /* SkyLensApp.swift */,
-				D0AE4CF42F8B9C96006ABE86 /* ContentView.swift */,
 				D0AE4CF62F8B9C99006ABE86 /* Assets.xcassets */,
 				D0AE4CF82F8B9C99006ABE86 /* Preview Content */,
 			);
@@ -65,6 +76,38 @@
 				D0AE4CF92F8B9C99006ABE86 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D0AE4D002F8B9DAB006ABE86 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D0AE4D042F8B9EBC006ABE86 /* ImageModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		D0AE4D012F8B9DBE006ABE86 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D0AE4CF42F8B9C96006ABE86 /* ContentView.swift */,
+				D0AE4D082F8BA299006ABE86 /* ImageCellView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		D0AE4D022F8B9E38006ABE86 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		D0AE4D032F8B9E48006ABE86 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +181,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D0AE4CF52F8B9C96006ABE86 /* ContentView.swift in Sources */,
+				D0AE4D072F8B9FAF006ABE86 /* MockDataService.swift in Sources */,
+				D0AE4D052F8B9EBC006ABE86 /* ImageModel.swift in Sources */,
 				D0AE4CF32F8B9C96006ABE86 /* SkyLensApp.swift in Sources */,
+				D0AE4D092F8BA299006ABE86 /* ImageCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

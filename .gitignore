@@ -1,0 +1,18 @@
+# macOS
+.DS_Store
+
+# Xcode Build & Derived Data
+build/
+DerivedData/
+Index.noindex/
+
+#Xcode User-specific Files (Window layouts, active schemes, etc.)
+xcuserdata/
+*.pbxuser
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.xcuserstate
+
+# Swift Package Manager
+.swiftpm/xcode/
