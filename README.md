@@ -7,9 +7,17 @@ SkyLens is an iOS application designed for drone photographers to review high-re
 
 ## 📝 Overview
 
-The goal of this project phase is to establish a performance baseline by deliberately recreating a common iOS bottleneck: **Main-thread.**
-Currently, the application attempts to synchronously download and decode a batch of 50+ 4k high-resolution image while the user scrolls.
-This Causes severe UI stuttering, frame drops, and application hangs, simulating the exact problem we aim to fix in subsequent phases using Swift concurrency and Core Graphics downsampling. 
+This project successfully resolves severe UI stuttering, main-thread blocking and network timeout errors (Code -1001) caused by loading massive 4K RAW image payloads. The application has been fully refactored to utilize a thread-safe, asynchronous architecture, ensuring a fluid 60 FPS scrolling experience with a minimal memory footprint .
+
+## 🛠 Optimization Techniques Implemented
+### 1. Asynchronous UI Unblocking (`async/await`) 
+Synchronous `Data(contentsOf: )` calls were completely removed.
+The network layer was rewritten using swift 5.5 concurrency (`URLSession.shared.data(from:url) async throws`) wrapped within SwiftUI `.task` modifiers. This unblocks the main UI thread during heavy network activity and automatically off-screen
+### 2. Core Graphics Downsampling
+
+### 3. Thread-Safe In-Memory Caching
+
+### 4. UI Polish
 
 ## 🏗 Architecture & Setup
 

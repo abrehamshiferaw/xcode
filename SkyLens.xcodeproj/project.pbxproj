@@ -14,6 +14,8 @@
 		D0AE4D052F8B9EBC006ABE86 /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D042F8B9EBC006ABE86 /* ImageModel.swift */; };
 		D0AE4D072F8B9FAF006ABE86 /* MockDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */; };
 		D0AE4D092F8BA299006ABE86 /* ImageCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0AE4D082F8BA299006ABE86 /* ImageCellView.swift */; };
+		D0DA55142F8E7219007117A5 /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA55132F8E7219007117A5 /* ImageCache.swift */; };
+		D0DA55162F8E7597007117A5 /* ImageLoaderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DA55152F8E7597007117A5 /* ImageLoaderService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataService.swift; sourceTree = "<group>"; };
 		D0AE4D082F8BA299006ABE86 /* ImageCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCellView.swift; sourceTree = "<group>"; };
 		D0AE4D0A2F8BA9AE006ABE86 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D0DA55132F8E7219007117A5 /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		D0DA55152F8E7597007117A5 /* ImageLoaderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoaderService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D0AE4D062F8B9FAF006ABE86 /* MockDataService.swift */,
+				D0DA55152F8E7597007117A5 /* ImageLoaderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -106,6 +111,7 @@
 		D0AE4D032F8B9E48006ABE86 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				D0DA55132F8E7219007117A5 /* ImageCache.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -180,6 +186,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0DA55162F8E7597007117A5 /* ImageLoaderService.swift in Sources */,
+				D0DA55142F8E7219007117A5 /* ImageCache.swift in Sources */,
 				D0AE4CF52F8B9C96006ABE86 /* ContentView.swift in Sources */,
 				D0AE4D072F8B9FAF006ABE86 /* MockDataService.swift in Sources */,
 				D0AE4D052F8B9EBC006ABE86 /* ImageModel.swift in Sources */,
