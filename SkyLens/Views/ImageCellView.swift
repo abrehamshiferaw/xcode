@@ -1,5 +1,8 @@
 import SwiftUI
-
+/*
+ Optimized and upgraded the image view cell 
+ 
+ */
 struct ImageCellView: View {
     let imageModel: ImageModel
 //    we need state to hold the image once it finishes downloading in the background
@@ -32,13 +35,17 @@ struct ImageCellView: View {
             await fetchImage()
         }
     }
+ 
     private func fetchImage() async {
         do {
-//            Call our new background service
             let image = try await ImageLoaderService.loadAndDownsample(from: imageModel.url)
-//            Update the UI on the main thread
             await MainActor.run {
-                self.loadedImage = image
+//                Wrap the UI update in a SwiftUI animation!
+                
+                withAnimation(.easeIn(duration: 0.3))
+                {
+                    self.loadedImage = image
+                }
             }
         } catch {
             print("Failed to load optimized image: \(error)")

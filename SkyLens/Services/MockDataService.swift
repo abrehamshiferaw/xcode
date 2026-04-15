@@ -1,17 +1,20 @@
 import Foundation
 
 struct MockDataService {
-//    Generates an array of 50 massive 4k (3840x2160) image payloads
-    
-    static func getHighResImages() -> [ImageModel] {
-        var images: [ImageModel] = []
-        for i in 1...50 {
-//            The ?random parameter ensures the network fetches a unique image every time, preventing automatic caching
+//    Simulates fetching a specific 'page' of results, 20 at a time
+    static func getImages(page: Int, perPage: Int = 20 ) async -> [ImageModel] {
+//        Simulate a slight network delay (0.5 seconds) so we can see our loading spinners
+        try? await Task.sleep(nanoseconds: 500_000_000)
+        var newImages: [ImageModel] = []
+        let startIndex = (page - 1) * perPage + 1
+        let endIndex = page * perPage
+        
+        for i in startIndex...endIndex
+        {
             if let url = URL(string: "https://picsum.photos/3840/2160?random=\(i)") {
-                images.append(ImageModel(url:url, title: "Drone Capture \(String(format: "%02d", i))" ))
+                newImages.append(ImageModel(url: url, title: "Capture \(i)"))
             }
         }
-        
-        return images
+        return newImages
     }
 }
